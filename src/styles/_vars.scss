@@ -1,0 +1,36 @@
+//breakepoints:
+$mobile: 320px;
+$desktop: 560px;
+
+//colors:
+$accentColor: #3faf6c;
+$deleteColor: #d2697a;
+$backgroundActiveColor: #fdfdf6;
+$border: 1px solid rgba(0, 0, 0, 0.1);
+
+//mixins:
+@mixin containerWrapper($value) {
+  padding-right: $value;
+  padding-left: $value;
+}
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+@mixin listText($fontWeight) {
+  font-size: 13px;
+  line-height: 65px;
+  font-weight: $fontWeight;
+  letter-spacing: 0.025em;
+  color: $accentColor;
+}
