@@ -6,15 +6,19 @@ export const add = (name) => ({
   payload: {
     name,
     id: shortid.generate(),
-    stopwatch: {
-      isPaused: false,
-      seconds: 0,
-      minutes: 0,
-      hours: 0,
-    },
+    isPausable: false,
   },
 });
+
 export const remove = (itemID) => ({
   type: types.REMOVE,
   payload: itemID,
+});
+
+export const changeStatus = (id, bool) => ({
+  type: types.CHANGE_STATUS,
+  payload: {
+    id,
+    bool,
+  },
 });

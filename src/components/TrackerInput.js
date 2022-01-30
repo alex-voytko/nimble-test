@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "./Button";
 import moment from "moment";
 import * as actions from "../redux/tracker-redux/tracker-actions";
 import { connect } from "react-redux";
@@ -15,7 +16,8 @@ class TrackerInput extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    const nameCheck = this.state.name || moment().format();
+    const nameCheck =
+      this.state.name || moment().format("HH:mm:ss, Do of MMMM, YYYY");
     this.props.onSubmit(nameCheck);
     this.reset();
   };
@@ -34,7 +36,7 @@ class TrackerInput extends Component {
             onChange={this.handleInput}
             value={this.state.name}
           />
-          <button className='input-container__button' type='submit'></button>
+          <Button className='input-container__button' type='submit' />
         </form>
       </div>
     );

@@ -1,38 +1,66 @@
-export default function TrackerList() {
+import React from "react";
+import StopwatchString from "./StopwatchString";
+import Button from "./Button";
+import { connect } from "react-redux";
+import * as actions from "../redux/tracker-redux/tracker-actions";
+
+function TrackerList({ stopwatches, onChangeStatus, onRemove }) {
   return (
-    <div className='list-container'>
-      <ul>
-        <li className='list-container__item'>
-          <p className='list-container__item__stopwatch-name'>
-            No name tracker #1
-          </p>
-          <div>
-            <p className='list-container__item__stopwatch-time'>00:01:32</p>
-            <button className='list-container__item__pause-btn'></button>
-            <button className='list-container__item__remove-btn'></button>
-          </div>
-        </li>
-        <li className='list-container__item'>
-          <p className='list-container__item__stopwatch-name'>
-            No name tracker #1
-          </p>
-          <div>
-            <p className='list-container__item__stopwatch-time'>00:01:32</p>
-            <button className='list-container__item__pause-btn'></button>
-            <button className='list-container__item__remove-btn'></button>
-          </div>
-        </li>
-        <li className='list-container__item'>
-          <p className='list-container__item__stopwatch-name'>
-            No name tracker #12352361616361
-          </p>
-          <div>
-            <p className='list-container__item__stopwatch-time'>00:01:32</p>
-            <button className='list-container__item__pause-btn'></button>
-            <button className='list-container__item__remove-btn'></button>
-          </div>
-        </li>
-      </ul>
-    </div>
+    stopwatches.length >= 1 && (
+      <div className='list-container'>
+        <ul>
+          {stopwatches.map(({ name, id, isPausable }) => (
+            <li
+              className={
+                !isPausable
+                  ? `list-container__item`
+                  : `list-container__item pausable`
+              }
+              key={id}
+            >
+              <p className='list-container__item__stopwatch-name'>
+                <span
+                  className={
+                    !isPausable
+                      ? `list-container__item__stopwatch-name vertical-align`
+                      : `list-container__item__stopwatch-name vertical-align pausable`
+                  }
+                >
+                  {name}
+                </span>
+              </p>
+              <div>
+                <StopwatchString isPausable={isPausable} />
+                <Button
+                  className={
+                    !isPausable
+                      ? `list-container__item__pause-btn`
+                      : `list-container__item__pause-btn resume`
+                  }
+                  type='button'
+                  onClick={() => onChangeStatus(id, isPausable)}
+                />
+                <Button
+                  className='list-container__item__remove-btn'
+                  type='button'
+                  onClick={() => onRemove(id)}
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
   );
 }
+
+const mapStateToProps = (state) => ({
+  stopwatches: state.stopwatches,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onRemove: (id) => dispatch(actions.remove(id)),
+  onChangeStatus: (id, bool) => dispatch(actions.changeStatus(id, bool)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackerList);

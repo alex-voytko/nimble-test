@@ -58,15 +58,32 @@
       display: flex;
       align-items: center;
       border-bottom: $border;
+      background-color: $backgroundActiveColor;
       @include containerWrapper(12px);
+      &.pausable {
+        background-color: white;
+      }
       &__stopwatch-name {
-        display: inline;
-        @include listText(400);
-        word-wrap: break-word;
+        @include listText(400, 1);
+        &.vertical-align {
+          display: inline-block;
+          vertical-align: middle;
+          &.pausable {
+            color: black;
+          }
+        }
       }
       &__stopwatch-time {
-        @include listText(700);
+        @include listText(700, 65px);
         margin-right: 27px;
+        margin-left: 20px;
+        .stopwatch-devider {
+          padding-left: 3px;
+          padding-right: 3px;
+        }
+        &.pausable {
+          color: black;
+        }
       }
       div {
         margin-left: auto;
@@ -86,6 +103,10 @@
         background-image: url("../svg/pause-btn.svg");
         background-repeat: no-repeat;
         background-size: contain;
+        background-color: $backgroundActiveColor;
+        &.resume {
+          background-image: url("../svg/resume-btn.svg");
+        }
       }
       &__remove-btn {
         background-image: url("../svg/remove-btn.svg");

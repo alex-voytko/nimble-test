@@ -27,9 +27,9 @@ $border: 1px solid rgba(0, 0, 0, 0.1);
     @content;
   }
 }
-@mixin listText($fontWeight) {
+@mixin listText($fontWeight, $lineHeight) {
   font-size: 13px;
-  line-height: 65px;
+  line-height: $lineHeight;
   font-weight: $fontWeight;
   letter-spacing: 0.025em;
   color: $accentColor;
