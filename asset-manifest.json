@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/nimble-test/static/css/main.c53279a6.css",
+    "main.js": "/nimble-test/static/js/main.3e7f7ceb.js",
+    "index.html": "/nimble-test/index.html",
+    "static/media/pause-btn.svg": "/nimble-test/static/media/pause-btn.c3e580369bf55943cbf2.svg",
+    "static/media/set-stopwatch-btn.svg": "/nimble-test/static/media/set-stopwatch-btn.580462e466aeeb246625.svg",
+    "static/media/resume-btn.svg": "/nimble-test/static/media/resume-btn.7279bad4dd06521b4d85.svg",
+    "static/media/remove-btn.svg": "/nimble-test/static/media/remove-btn.02fc2de07c68bd38b720.svg",
+    "main.c53279a6.css.map": "/nimble-test/static/css/main.c53279a6.css.map",
+    "main.3e7f7ceb.js.map": "/nimble-test/static/js/main.3e7f7ceb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c53279a6.css",
+    "static/js/main.3e7f7ceb.js"
+  ]
+}
