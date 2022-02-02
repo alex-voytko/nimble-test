@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Button from "./Button";
 import moment from "moment";
-import * as actions from "../redux/tracker-redux/tracker-actions";
 import { connect } from "react-redux";
+import Button from "./Button";
+import { addStopwatch } from "../redux/tracker-redux/tracker-slice";
 
 class TrackerInput extends Component {
   state = {
@@ -44,7 +44,7 @@ class TrackerInput extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (data) => dispatch(actions.add(data)),
+  onSubmit: (data) => dispatch(addStopwatch(data)),
 });
 
 export default connect(null, mapDispatchToProps)(TrackerInput);

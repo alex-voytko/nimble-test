@@ -1,11 +1,8 @@
-import { combineReducers, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import itemsReducer from "./tracker-redux/tracker-reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import trackerReducer from "./tracker-redux/tracker-slice";
 
-const rootReducer = combineReducers({
-  stopwatches: itemsReducer,
+const store = configureStore({
+  reducer: { stopwatches: trackerReducer },
 });
-
-const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;
