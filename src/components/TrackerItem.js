@@ -1,12 +1,10 @@
 import { useInterval } from "usehooks-ts";
 import { useDispatch } from "react-redux";
-
 import {
   addTime,
   changeStopwatchStatus,
   removeStopwatch,
 } from "../redux/tracker-redux/tracker-slice";
-
 import StopwatchName from "./StopwatchName";
 import StopwatchTime from "./StopwatchTime";
 import Button from "./Button";
@@ -35,21 +33,11 @@ function TrackerItem({
         }
         key={id}
       >
-        <StopwatchName
-          name={name}
-          className={
-            !isPausable
-              ? `list-container__item__stopwatch-name vertical-align`
-              : `list-container__item__stopwatch-name vertical-align pausable`
-          }
-        />
+        <StopwatchName name={name} isPausable={isPausable} />
+
         <div>
           <StopwatchTime
-            className={
-              !isPausable
-                ? `list-container__item__stopwatch-time`
-                : `list-container__item__stopwatch-time pausable`
-            }
+            isPausable={isPausable}
             timeSeconds={timeSeconds}
             timeMinutes={timeMinutes}
             timeHours={timeHours}
